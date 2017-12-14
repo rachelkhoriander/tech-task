@@ -49,7 +49,7 @@ An access token is a piece of data that accompanies a request to a server and is
 
 ## Registering the Application with GitHub
 
-Before you can use GitHub authentication for your web application, you must first register it with GitHub. You can register your app under your personal account or under any organization to which you have administrative access.
+Before you can use GitHub authentication for your web application, you must first register it with GitHub. You can register your app under your personal account or under any organization for which you are an administrator.
 
 Before you begin, you will need to know:
 
@@ -115,7 +115,7 @@ In this tutorial, the source code required to interact with the GitHub API is lo
 #### Authenticating Users
 When you are ready to authenticate users, you'll need to send a GET request to GitHub to request an authorization code for your application.
 
-`https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE&state=STATE`
+`https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE`
 
 You can (and should) append the following parameters to the URL.
 
@@ -129,10 +129,11 @@ Name           | Description
 In the code snippet below, the `client_id` is pulled from your application’s GitHub registration page, and the `redirect_uri` is identical to the `Authorization callback URL` you entered when registering your application with GitHub (see [Registering the Application with GitHub](#registering-the-application-with-github)).
 
 ```php
+//Redirects to GitHub authentication page, restricting scope to read-only user data.
 function goToAuthURL() {
     $client_id= "02786875d196f38bfdf1";
     $redirect_uri= "https://rachel.sems-tech.com/callback.php";
- 
+        
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $url = 'https://github.com/login/oauth/authorize?client_id='. $client_id. '&redirect_uri='. $redirect_uri.'&scope=read:user';
         header("location: $url");
@@ -166,7 +167,7 @@ Scope Name         | Description
 `write:public_key` | Create, list, and view details for public keys.
 `read:public_key`  | List and view details for public keys.
 `admin:repo_hook`  | Read, write, ping, and delete access to hooks in repos.
-`write:repo_hook`	 | Read, write, and ping access to hooks in repos.
+`write:repo_hook`  | Read, write, and ping access to hooks in repos.
 `read:repo_hook`   | Read and ping access to hooks in repos.
 `admin:org_hook`   | Read, write, ping, and delete access to organization hooks.
 `Gist`             | Write access to gists.
@@ -182,43 +183,26 @@ Scope Name         | Description
 
 For more info, see [About scopes for OAuth Apps](https://developer.github.com/apps/building-oauth-apps/scopes-for-oauth-apps/) in the GitHub Developer documentation.
 
-A Word about State
-
-
-
-
-
-
-
-
-
-
-
 #### Getting an Access Token
 
-Once redirected to GitHub, the user will be prompted to log in. If the user accepts your request, Github redirects to the `redirect_uri` or `Authorization callback URL` with an authorization code, which can be exchanged for an access token, and the state you provided in the previous step.
+Once redirected to GitHub, the user will be prompted to log in and authorize your application to access data. If the user accepts your request, GitHub redirects to the `redirect_uri` or `Authorization callback URL` with an authorization code, which can be exchanged for an access token.
 
-First, however, you’ll need to check the state parameter. 
-
-##### Checking the State
-
-Check that the state parameter returned matches the state parameter you originally sent. If the states don't match, the request was created by another party, and you should abort the process. 
-
-
-
-
-
-
-
+In the code snippets below, the `client_id` and `client_secret`are pulled from your application’s GitHub registration page, and the `redirect_uri` is identical to the `Authorization callback URL` you entered when registering your application with GitHub (see [Registering the Application with GitHub](#registering-the-application-with-github)).
 
 ##### Parsing the Authorization Code
 Parse the authorization code returned from GitHub.
 
 ```php
-//Extract the code from the original URL
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['code'])) {
-        $code = $_GET['code'];
+function fetchData() {
+
+    $client_id= "02786875d196f38bfdf1";
+    $redirect_uri= "https://rachel.sems-tech.com/callback.php";
+    $client_secret = "31da8f9408febd03d766f5672c91623d6736a2cc";
+    
+    //If authorization code was returned, extract authorization code.
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (isset($_GET['code'])) {
+            $code = $_GET['code'];
 ```
 
 ##### Exchanging for an Access Token
@@ -242,54 +226,52 @@ Name             | Description
 > Never share your client secret with anyone; it's called a “secret” for a reason.
 
 ```php
-        // Build the querystring for the post request.
-        $post = http_build_query(array(
-                   'client_id' => $client_id,
-                   'redirect_uri' => $redirect_url,
-                   'client_secret' => $client_secret,
-                   'code' => $code,
-        ));
-    }
-```
+            //Generate URL-encoded querystring from all variables.
+            $post = http_build_query(array(
+                        'client_id' => $client_id,
+                        'redirect_uri' => $redirect_uri,
+                        'client_secret' => $client_secret,
+                        'code' => $code,
+                    ));
 
-```php 
-// Get and parse the access token returned from GitHub.
-$access_data = file_get_contents("https://github.com/login/oauth/access_token?". $post);
-$exploded1 = explode("access_token=", $access_data);
-$exploded2 = explode('&scope=read:user', $exploded1[1]);
-$access_token = $exploded2[0];
-$_SESSION['token'] = $access_token;
+            //Get and isolate access token returned from GitHub.
+            $access_data = file_get_contents("https://github.com/login/oauth/access_token?". $post);
+            $exploded1 = explode("access_token=", $access_data);
+            $exploded2 = explode('&scope=read:user', $exploded1[1]);
+            $access_token = $exploded2[0];
 ```
 
 #### Fetching User Data
 Any time you want to fetch user data from GitHub (within the approved scope), use the access token and send along with your request.
 
 ```php
-//build header
-	$opts = [ 'http' => [
-                         'method' => 'GET',
-                         'header' => [ 'User-Agent: PHP']
-                   ]
-                ];
-
-//Using access token, fetch user data.               
-        $url = "https://api.github.com/user?access_token=". $access_token;
-        $context = stream_context_create($opts);
-        $data = file_get_contents($url, false, $context);
-```
+           // Build header
+           $opts = [ 'http' => [
+                             'method' => 'GET',
+                             'header' => [ 'User-Agent: PHP']
+                             ]
+                    ];
+               
+            // Using access token, fetch user data.
+            $url = "https://api.github.com/user?access_token=". $access_token;
+            $context = stream_context_create($opts);
+            $data = file_get_contents($url, false, $context);
+ ```
 
 ##### Extracting User Data
 The GitHub API sends and receives all data as JSON, so we will need to decode the JSON string and extract the data.
 
 ```php
-        //Decode and convert JSON string to PHP variable, and extract pieces of data.
-        $user_data = json_decode($data, true);
-        $username = $user_data['login'];
-        $email = $user_data['email'];
+           //Decode and convert JSON string to PHP variable, and extract pieces of data.
+            $user_data = json_decode($data, true);
+            $username = $user_data['login'];
+            $email = $user_data['email'];
                      
-        //Load user data into session variables.
-        $_SESSION['user'] = $username;
-        $_SESSION['email'] = $email;  
+               //Load user data into session variables.
+            $_SESSION['user'] = $username;
+            $_SESSION['email'] = $email;               
+        }
+    }
 ```
 
 For more information about the data returned from the GitHub API, see our upcoming tutorial:
