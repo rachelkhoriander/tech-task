@@ -34,6 +34,7 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
     - [Processing the Logout (logout.php)](#processing-the-logout)  
 - [Deploying the Application](#deploying-the-application)  
 - [Running the Application](#running-the-application)
+- [Next Steps](#next-steps)
 
 ## How Does GitHub Authentication Work?
 
@@ -420,6 +421,15 @@ header("location: index.php");
 ```
 
 ## Deploying the Application
+
+To begin using PHP, you need to set up a proper development environment. Detailed instructions on how to set up this development environment on various platforms are available in the [online manual](http://www.php.net/manual/en/installation.php).
+
+After you’ve successfully installed and tested PHP, copy the source code files to your computer.
+
+1. On the command line, enter:  
+    `git clone https://github.com/rachelkhoriander/tech-task.git`
+
+2. Copy the PHP and CSS files in the `source` folder into the web folder of your development environment.
 
 
 ## Running the Application
