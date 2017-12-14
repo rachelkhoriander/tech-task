@@ -20,7 +20,7 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
 - [Building the Application](#building-the-application)  
     - [Accessing the GitHub API (access_gh.php)](#accessing-the-github-api)  
         - [Authenticating Users](#authenticating-users)  
-	    - [Choosing Scopes](#choosing-scopes)  
+	- [Choosing Scopes](#choosing-scopes)  
 	- [Getting an Access Token](#getting-an-access-token)  
 	    - [Checking the State](#checking-the-state)  
 	    - [Parsing the Authorization Code](#parsing-the-authorization-code)  
