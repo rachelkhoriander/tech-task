@@ -18,7 +18,23 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
   - [What is an Access Token?](#what-is-an-access-token)
 - [Registering Your Application with GitHub](#registering-your-application-with-github)
 
-- [Building Your Application](#building-your-application)
+- [Building Your Application](#building-your-application)  
+    - [Accessing the GitHub API (init.php)](#accessing-the-github-api-(init.php))
+
+
+### Building the Index Page (index.php)
+
+
+### Processing the Login (login.php)
+
+
+### Processing the Callback (callback.php)
+
+
+### Building the Main Page (main.php)
+
+
+### Processing the Logout (logout.php)
 - Deploying Your Application
 - Running Your Application
 
@@ -99,7 +115,22 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 -	**Stylesheet** (style.css)  
     Unnecessary, but included to make the app look a little prettier.
 
+### Accessing the GitHub API (init.php)
 
+
+### Building the Index Page (index.php)
+
+
+### Processing the Login (login.php)
+
+
+### Processing the Callback (callback.php)
+
+
+### Building the Main Page (main.php)
+
+
+### Processing the Logout (logout.php)
 
 
 
