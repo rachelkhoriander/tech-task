@@ -57,19 +57,19 @@ Once you have gathered this info, you are ready to register.
 1. Log in to your GitHub account.
 2. In the upper-right corner, click your profile photo, then click **Settings**.
 
-    ![Screenshot: Select Settings](images/reg_2_sel_settings.png)
+    ![Screenshot: Select settings](images/reg_2_sel_settings.png)
     
 3. In the left sidebar, click **Developer settings**.
 
-    ![Screenshot: Select Dev Settings](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_3_sel_dev_settings.png)
+    ![Screenshot: Select dev settings](images/reg_3_sel_dev_settings.png)
 
 4. Click **Register a new application**.
 
-    ![Screenshot: Register new app](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_4_sel_reg_new_app.png)
+    ![Screenshot: Register new app](images/reg_4_sel_reg_new_app.png)
 
 5. Type in the details for your application, and click **Register application**.
 
-    ![Screenshot: Enter app detail](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_5_reg_app.png)
+    ![Screenshot: Enter app detail](images/reg_5_reg_app.png)
 
     Field                        | Description
     -----------------------------|-------------------------------
@@ -80,7 +80,7 @@ Once you have gathered this info, you are ready to register.
 
 When you have finished, GitHub will assign your application a **Client ID** and **Client Secret**. 
 
-![Screenshot: Edit app details](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_6_app_reg_final.png)
+![Screenshot: Edit app details](images/reg_6_app_reg_final.png)
 
 > **Note:**  
 > Notice that you can edit options for your app, track user metrics, and revoke user tokens from this page. This will come in handy during testing.
@@ -133,22 +133,22 @@ Now that everything is properly configured, let’s run our application to revie
 
 1.	Type the URL to the appication's index page (index.php), and click **Sign In with GitHub**.  
 
-    ![Screenshot: Index Page](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_1_index.png)
+    ![Screenshot: Index page](images/run_1_index.png)
  
 2.	Log in using GitHub’s API.  
 
-    ![Screenshot: GitHub Login](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_2_ghlogin.png)
+    ![Screenshot: GitHub login](images/run_2_ghlogin.png)
 
 3.	Authorize access to your GitHub user data.  
 
-    ![Screenshot: GitHub Authorize](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_3_ghauth.png)
+    ![Screenshot: GitHub authorization](images/run_3_ghauth.png)
  
     > Note:  
     > Notice the access level corresponds to the requsted scope.
 
 4.	Arrive at the application’s main page (main.php).  
 
-    ![Screenshot: Main Page](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_4_main.png)
+    ![Screenshot: Main page](images/run_4_main.png)
  
 ## Next Steps
 To learn more about GitHub's API, visit the [GitHub Developer Guide](https://developer.github.com/apps/getting-started-with-building-apps/).
