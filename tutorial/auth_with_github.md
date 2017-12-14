@@ -21,7 +21,7 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
     - [Accessing the GitHub API (access_gh.php)](#accessing-the-github-api)  
         - [Authenticating Users](#authenticating-users)
         - [Getting an Access Token](#getting-an-access-token)
-	- [Fetching User Data](#fetching-user-data)
+        - [Fetching User Data](#fetching-user-data)
     - [Building the Index Page (index.php)](#building-the-index-page)  
     - [Processing the Login (login.php)](#processing-the-login)  
     - [Processing the Callback (callback.php)](#processing-the-callback)  
