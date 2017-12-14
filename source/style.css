@@ -1,0 +1,15 @@
+body {
+   background-color: #000000;
+}
+
+.content {
+   max-width: 500px;
+   min-height: 200px;
+   vertical-align: middle;
+   margin: auto;
+   background-color: white;
+   border: #00FB35 2px solid;
+   font-family: sans-serif, Tahoma, Arial;
+   text-align: center;
+   line-height: 1.5;
+}
