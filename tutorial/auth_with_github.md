@@ -74,11 +74,12 @@ Once you have gathered this info, you are ready to register.
     `Authorization callback URL` | **Required.** The callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL; GitHub won't accept _localhost_.
 
 
-When you have finished, GitHub will assign your application a Client ID and Client Secret. 
+When you have finished, GitHub will assign your application a **Client ID** and **Client Secret**. 
 
-    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_6_app_reg_final.png)
+![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_6_app_reg_final.png)
 
-> **Note:** Notice that you can edit options for your app, track user metrics, and revoke user tokens from this page. This will come in handy during testing.
+> **Note:**
+> Notice that you can edit options for your app, track user metrics, and revoke user tokens from this page. This will come in handy during testing.
 
 
 
