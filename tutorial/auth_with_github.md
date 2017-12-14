@@ -14,29 +14,18 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
 
 ## Topics
 
-- [How Does GitHub Authentication Work?](#how-does-github-authentication-work)
-  - [What is an Access Token?](#what-is-an-access-token)
-- [Registering Your Application with GitHub](#registering-your-application-with-github)
-
+- [How Does GitHub Authentication Work?](#how-does-github-authentication-work)  
+  - [What is an Access Token?](#what-is-an-access-token)  
+- [Registering Your Application with GitHub](#registering-your-application-with-github)  
 - [Building Your Application](#building-your-application)  
-    - [Accessing the GitHub API (init.php)](#accessing-the-github-api-(init.php))
-
-
-### Building the Index Page (index.php)
-
-
-### Processing the Login (login.php)
-
-
-### Processing the Callback (callback.php)
-
-
-### Building the Main Page (main.php)
-
-
-### Processing the Logout (logout.php)
-- Deploying Your Application
-- Running Your Application
+    - [Accessing the GitHub API (init.php)](#accessing-the-github-api)  
+    - [Building the Index Page (index.php)](#building-the-index-page)  
+    - [Processing the Login (login.php)](#processing-the-login)  
+    - [Processing the Callback (callback.php)](#processing-the-callback)  
+    - [Building the Main Page (main.php)](#building-the-main-page)  
+    - [Processing the Logout (logout.php)](#processing-the-logout)  
+- [Deploying Your Application](#deploying-your-application)  
+- [Running Your Application](#running-your-application)
 
 ## How Does GitHub Authentication Work?
 
@@ -115,23 +104,30 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 -	**Stylesheet** (style.css)  
     Unnecessary, but included to make the app look a little prettier.
 
-### Accessing the GitHub API (init.php)
+### Accessing the GitHub API
 
 
-### Building the Index Page (index.php)
 
 
-### Processing the Login (login.php)
+### Building the Index Page
 
 
-### Processing the Callback (callback.php)
+### Processing the Login
 
 
-### Building the Main Page (main.php)
+### Processing the Callback
 
 
-### Processing the Logout (logout.php)
+### Building the Main Page
 
+
+### Processing the Logout
+
+
+##Deploying Your Application
+
+
+##Running Your Application
 
 
 
