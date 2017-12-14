@@ -131,7 +131,7 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 
 Now that everything is properly configured, let’s run our application to review what users will see.
 
-1.	Type the URL to the appication's index page, and click **Sign In with GitHub**.  
+1.	Type the URL to the appication's index page (index.php), and click **Sign In with GitHub**.  
 
     ![Screenshot: Index Page](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_1_index.png)
  
@@ -146,7 +146,7 @@ Now that everything is properly configured, let’s run our application to revie
     > Note:  
     > Notice the access level corresponds to the requsted scope.
 
-4.	Arrive at the application’s main page.  
+4.	Arrive at the application’s main page (main.php).  
 
     ![Screenshot: Main Page](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_4_main.png)
  
