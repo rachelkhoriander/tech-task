@@ -18,7 +18,7 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
   - [What is an Access Token?](#what-is-an-access-token)
 - [Registering Your Application with GitHub](#registering-your-application-with-github)
 
-- Building Your Application
+- [Building Your Application](#building-your-application)
 - Deploying Your Application
 - Running Your Application
 
@@ -79,6 +79,26 @@ When you have finished, GitHub will assign your application a **Client ID** and 
 
 > **Note:**  
 > Notice that you can edit options for your app, track user metrics, and revoke user tokens from this page. This will come in handy during testing.
+
+## Building Your Application
+
+Now that GitHub has assigned our application a Client ID and Client Secret, we can build our application. The app will contain the following assets:
+
+- Main logic script (include file)  
+    Acts as the brains of the operation: makes the initial call to the GitHub API, uses the returned code to get an access token, and fetches user data.
+- Index page
+    Serves as the initial page of the app. Contains log in button.
+- Login script  
+    Handles the login process.
+-	Callback script  
+    Handles callback logic and redirects the user appropriately.
+-	Main page  
+    Serves as the main page of the app once the user logs in. Contains log out button.
+-	Logout script  
+    Handles the logout process.
+-	Stylesheet  
+    Unnecessary, but included to make the app look a little prettier.
+
 
 
 
