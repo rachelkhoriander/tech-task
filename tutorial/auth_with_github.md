@@ -49,7 +49,7 @@ An access token is a piece of data that accompanies a request to a server and is
 
 ## Registering the Application with GitHub
 
-Before you can use GitHub authentication for your web application, you must first register it with GitHub. You can register your app under your personal account or under any organization for which you are an administrator.
+Before you can use GitHub authentication for your web application, you must first register your app with GitHub. You can register your app under your personal account or under any organization for which you are an administrator.
 
 Before you begin, you will need to know:
 
