@@ -111,12 +111,75 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 
 ### Building the Index Page
 
+The user will arrive on the application's index page, which incldes the **Sign In with GitHub** button.
+
+```php
+<?php
+session_start();
+
+require "init.php";
+
+//If session is not empty, redirect to callback page.
+if (isset($_SESSION['user'])) {
+     header("location: callback.php");
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Technical Task: Sign In with GitHub</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="content">
+      <p>Hello, world.</p>
+      <p><a href="login.php"><input type='submit' name='submit' value='Sign In with GitHub' /></a></p>
+    </div>
+  </body>
+</html>
+```
 
 ### Processing the Login
 
+Once the user clicks **Sign In with GitHub**, we will redirect the user to the GitHub API.
+
+```php
+<?php
+
+require "init.php";
+
+//Redirect user to GitHub authentication page
+goToAuthUrl();
+
+//If redirect fails, then:
+echo "Operation failed.";
+```
 
 ### Processing the Callback
 
+When redirected from the GitHub API, we will fetch the user data and redirect to the main application page. 
+
+```php
+<?php
+ 
+session_start();
+ 
+require "init.php";
+
+//Use code to get access token, then fetch user data from GitHub.
+fetchData();
+
+//If session is empty, redirect to index page, so user can log in.
+if (!isset($_SESSION['user'])) {
+     header("location: index.php");
+}
+//Else redirect to main page.
+else {
+     header("location: main.php");
+}
+```
 
 ### Building the Main Page
 
@@ -131,7 +194,7 @@ require "init.php";
 
 //If session is empty, redirect to index page, so user can log in.
 if (!isset($_SESSION['user'])){
-	header("location: index.php");
+    header("location: index.php");
 }
 ?>
 
@@ -155,7 +218,7 @@ if (!isset($_SESSION['user'])){
 
 ### Processing the Logout
 
-Once the user clicks **Sign out with GitHub**, we will destroy the session and redirect the user to the index page.
+Once the user clicks **Sign Out with GitHub**, we will destroy the session and redirect the user to the index page.
 
 ```php
 <?php
