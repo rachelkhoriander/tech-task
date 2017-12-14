@@ -106,6 +106,85 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 
 ### Accessing the GitHub API
 
+In this tutorial, we have contained the code required to interact with the GitHub API in an include file (init.php). 
+
+#### Redirecting to GitHub to Authenticate
+When you are ready to authenticate users, you'll need to send them to GitHub to request an access code for your application.
+
+Where you send them (GET call):
+https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE&state=STATE
+Parameters
+You can (and should) append these parameters to the URL.
+Name	Type	Description
+client_id	string	Required. The client ID that GitHub assigned to your application when you registered.
+
+redirect_uri	string	The URL in your application where users will be sent after authorization. If this is not provided, GitHub will redirect users to the Callback URL you provided when you registered your application. If provided, the redirect URL's host and port must exactly match the callback URL. The redirect URL's path must reference a subdirectory of the callback URL.
+scope	string	Scopes are named groups of permissions that an OAuth App can request to access both public and non-public data. The scope attribute lists scopes attached to the token that were granted by the user.
+A space-delimited list of scopes. If not provided, scope defaults to an empty list for users that have not authorized any scopes for the application. For users who have authorized scopes for the application, the user won't be shown the OAuth authorization page with the list of scopes. Instead, this step of the flow will automatically complete with the set of scopes the user has authorized for the application. For example, if a user has already performed the web flow twice and has authorized one token with user scope and another token with repo scope, a third web flow that does not provide a scope will receive a token with user and repo scope.
+state	string	An unguessable random string used to protect against cross-site request forgery attacks.
+allow_signup	string	Whether or not unauthenticated users will be offered an option to sign up for GitHub during the OAuth flow. The default is true.
+
+About Scopes
+Your app can have read or write access to specific types of users’ GitHub data. 
+•	Read access allows your app to look at data.
+•	Write access allows your app to change data.
+When users authenticate, GitHub lets them know what type of data your applications wants to access and what type of access to that data your application is requesting. 
+NOTE: Normally, users will grant you scopes identical to what you requested, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
+Types of Data
+Type of data	Description
+Commit status	You can grant access for an app to report your commit status. Commit status access allows apps to determine if a build is a successful against a specific commit. Apps won't have access to your code, but they can read and write status information against a specific commit.
+Deployments	Deployment status access allows apps to determine if a deployment is successful against a specific commit for public and private repositories. Apps won't have access to your code.
+Gists	Gist access allows apps to read or write to both your public and secret Gists.
+
+Hooks	Webhooks access allows apps to read or write hook configurations on repositories you manage.
+Notifications	Notification access allows apps to read your GitHub notifications, such as comments on issues and pull requests. However, apps remain unable to access anything in your repositories.
+Organizations and teams	Organization and teams access allows apps to access and manage organization and team membership.
+Personal user data	User data includes information found in your user profile, like your name, e-mail address, and location.
+Repositories	Repository information includes the names of contributors, the branches you've created, and the actual files within your repository. Apps can request access for either public or private repositories on a user-wide level.
+Repository delete	Apps can request to delete repositories that you administer, but they won't have access to your code.
+
+
+Scopes
+Name	Description
+(no scope)	Grants read-only access to public information (includes public user profile info, public repository info, and gists)
+Repo	Grants read/write access to code, commit statuses, invitations, collaborators, adding team memberships, and deployment statuses for public and private repositories and organizations.
+ repo:status	Grants read/write access to public and private repository commit statuses. This scope is only necessary to grant other users or services access to private repository commit statuses without granting access to the code.
+ repo_deployment	Grants access to deployment statuses for public and private repositories. This scope is only necessary to grant other users or services access to deployment statuses, without granting access to the code.
+ public_repo	Grants read/write access to code, commit statuses, collaborators, and deployment statuses for public repositories and organizations. Also required for starring public repositories.
+ repo:invite	Grants accept/decline abilities for invitations to collaborate on a repository. This scope is only necessary to grant other users or services access to invites without granting access to the code.
+admin:org	Fully manage organization, teams, and memberships.
+ write:org	Publicize and unpublicize organization membership.
+ read:org	Read-only access to organization, teams, and membership.
+admin:public_key	Fully manage public keys.
+ write:public_key	Create, list, and view details for public keys.
+ read:public_key	List and view details for public keys.
+admin:repo_hook	Grants read, write, ping, and delete access to hooks in public or private repositories.
+ write:repo_hook	Grants read, write, and ping access to hooks in public or private repositories.
+ read:repo_hook	Grants read and ping access to hooks in public or private repositories.
+admin:org_hook	Grants read, write, ping, and delete access to organization hooks. Note:OAuth tokens will only be able to perform these actions on organization hooks which were created by the OAuth App. Personal access tokens will only be able to perform these actions on organization hooks created by a user.
+Gist	Grants write access to gists.
+Notifications	Grants read access to a user's notifications. repo also provides this access.
+User	Grants read/write access to profile info only. Note that this scope includes user:email and user:follow.
+ read:user	Grants access to read a user's profile data.
+ user:email	Grants read access to a user's email addresses.
+ user:follow	Grants access to follow or unfollow other users.
+delete_repo	Grants access to delete adminable repositories.
+admin:gpg_key	Fully manage GPG keys.
+ write:gpg_key	Create, list, and view details for GPG keys.
+ read:gpg_key	List and view details for GPG keys.
+
+For more info, see About scopes for OAuth Apps in the GitHub Developer documentation.
+A Word about State
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -116,8 +195,6 @@ The user will arrive on the application's index page, which includes the **Sign 
 ```php
 <?php
 session_start();
-
-require "init.php";
 
 //If session is not empty, redirect to callback page.
 if (isset($_SESSION['user'])) {
@@ -148,7 +225,7 @@ Once the user clicks **Sign In with GitHub**, we will redirect the user to the G
 ```php
 <?php
 
-require "init.php";
+require "access_gh.php";
 
 //Redirect user to GitHub authentication page
 goToAuthUrl();
@@ -166,7 +243,7 @@ When redirected from the GitHub API, we will fetch the user data and redirect to
  
 session_start();
  
-require "init.php";
+require "access_gh.php";
 
 //Use code to get access token, then fetch user data from GitHub.
 fetchData();
@@ -189,8 +266,6 @@ If the login is successful, we will display the main page with the **Sign Out wi
 <?php
 
 session_start();
-
-require "init.php";
 
 //If session is empty, redirect to index page, so user can log in.
 if (!isset($_SESSION['user'])){
