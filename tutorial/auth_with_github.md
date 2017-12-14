@@ -73,10 +73,10 @@ Once you have gathered this info, you are ready to register.
 
     Field                        | Description
     -----------------------------|-------------------------------
-    `Application name`           | **Required.** The name of your application.
-    `Homepage URL`               | **Required.** The full URL to your app's website. For security purposes, you should use https.
-    `Application description`    | A description of your app that will be shared with users.
-    `Authorization callback URL` | **Required.** The callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL; GitHub won't accept _localhost_.
+    `Application name`           | **Required.** Name of your application.
+    `Homepage URL`               | **Required.** Full URL to your app's website. For security purposes, you should use https.
+    `Application description`    | Description of your app that will be shared with users.
+    `Authorization callback URL` | **Required.** Callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL; GitHub won't accept _localhost_.
 
 When you have finished, GitHub will assign your application a **Client ID** and **Client Secret**. 
 
@@ -112,70 +112,75 @@ In this tutorial, the code required to interact with the GitHub API is located i
 When you are ready to authenticate users, you'll need to send a GET request to GitHub to request an access code for your application.
 
 ```php
-https://github.com/login/oauth/authorize?client_id=_CLIENT_ID_&redirect_url=_REDIRECT_URL_&scope=_SCOPE_&state=_STATE_
+https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE&state=STATE
 ```
 
 ##### Parameters
-You can (and should) append these parameters to the URL.
-Name	Type	Description
-client_id	string	Required. The client ID that GitHub assigned to your application when you registered.
+You can (and should) append the following parameters to the URL.
 
-redirect_uri	string	The URL in your application where users will be sent after authorization. If this is not provided, GitHub will redirect users to the Callback URL you provided when you registered your application. If provided, the redirect URL's host and port must exactly match the callback URL. The redirect URL's path must reference a subdirectory of the callback URL.
-scope	string	Scopes are named groups of permissions that an OAuth App can request to access both public and non-public data. The scope attribute lists scopes attached to the token that were granted by the user.
-A space-delimited list of scopes. If not provided, scope defaults to an empty list for users that have not authorized any scopes for the application. For users who have authorized scopes for the application, the user won't be shown the OAuth authorization page with the list of scopes. Instead, this step of the flow will automatically complete with the set of scopes the user has authorized for the application. For example, if a user has already performed the web flow twice and has authorized one token with user scope and another token with repo scope, a third web flow that does not provide a scope will receive a token with user and repo scope.
-state	string	An unguessable random string used to protect against cross-site request forgery attacks.
-allow_signup	string	Whether or not unauthenticated users will be offered an option to sign up for GitHub during the OAuth flow. The default is true.
+Name          | Description
+--------------|-------------
+`client_id`     | **Required.** Client ID that GitHub assigned to your application when you registered.
+`redirect_uri`  |	URL in your application where GitHub will redirect users after they successfully log in. If not provided, GitHub will redirect users to the `Authorization callback URL` you provided when you registered your app.
+`scope`         | Space-delimited list of permissions that your application is requesting. If not provided, the scope will default to an empty list for users who have not previously authorized any scopes for your app. For users who have authorized scopes, GitHub will return a set of all of the scopes the user has previously authorized for the app.
+`state`         | Random string used to protect against cross-site request forgery attacks.
 
-About Scopes
-Your app can have read or write access to specific types of users’ GitHub data. 
-•	Read access allows your app to look at data.
-•	Write access allows your app to change data.
-When users authenticate, GitHub lets them know what type of data your applications wants to access and what type of access to that data your application is requesting. 
-NOTE: Normally, users will grant you scopes identical to what you requested, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
-Types of Data
-Type of data	Description
-Commit status	You can grant access for an app to report your commit status. Commit status access allows apps to determine if a build is a successful against a specific commit. Apps won't have access to your code, but they can read and write status information against a specific commit.
-Deployments	Deployment status access allows apps to determine if a deployment is successful against a specific commit for public and private repositories. Apps won't have access to your code.
-Gists	Gist access allows apps to read or write to both your public and secret Gists.
+##### Choosing Scopes
+Your application may request read or write access to specific types of users’ GitHub data.
 
-Hooks	Webhooks access allows apps to read or write hook configurations on repositories you manage.
-Notifications	Notification access allows apps to read your GitHub notifications, such as comments on issues and pull requests. However, apps remain unable to access anything in your repositories.
-Organizations and teams	Organization and teams access allows apps to access and manage organization and team membership.
-Personal user data	User data includes information found in your user profile, like your name, e-mail address, and location.
-Repositories	Repository information includes the names of contributors, the branches you've created, and the actual files within your repository. Apps can request access for either public or private repositories on a user-wide level.
-Repository delete	Apps can request to delete repositories that you administer, but they won't have access to your code.
+-	Read access allows your app to look at data.
+-	Write access allows your app to change data.
+
+When users authenticate, GitHub lets them know what type of data your applications wants to access and what type of access to that data your application is requesting.
+
+>**Note**:  
+> Normally, users will grant you scopes identical to what you request, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
+
+Data Type               | Description
+------------------------|--------------
+Commit Status           |	Allows apps to determine if a build is successful against a specific commit. Apps do not gain access to your code.
+Deployments	            | Allows apps to determine if a deployment is successful against a specific commit. Apps do not gain access to your code.
+Gists	                  | Allows apps to access your gists.
+Hooks                   | Includes hook configurations on repositories you manage.
+Notifications           | Allows apps to read your GitHub notifications, like comments on issues and pull requests. Apps do not gain access to your repositories.
+Organizations and Teams | Allows apps to access organization and team membership.
+Personal User Data      | Includes information found in your user profile, including your name, email address, and location.
+Repositories	          | Includes the names of contributors, branches you've created, and actual files within your repos.
+Repository Delete       | Allows apps to delete repos that you administer. Apps do not gain access to your code.
 
 
-Scopes
-Name	Description
-(no scope)	Grants read-only access to public information (includes public user profile info, public repository info, and gists)
-Repo	Grants read/write access to code, commit statuses, invitations, collaborators, adding team memberships, and deployment statuses for public and private repositories and organizations.
- repo:status	Grants read/write access to public and private repository commit statuses. This scope is only necessary to grant other users or services access to private repository commit statuses without granting access to the code.
- repo_deployment	Grants access to deployment statuses for public and private repositories. This scope is only necessary to grant other users or services access to deployment statuses, without granting access to the code.
- public_repo	Grants read/write access to code, commit statuses, collaborators, and deployment statuses for public repositories and organizations. Also required for starring public repositories.
- repo:invite	Grants accept/decline abilities for invitations to collaborate on a repository. This scope is only necessary to grant other users or services access to invites without granting access to the code.
-admin:org	Fully manage organization, teams, and memberships.
- write:org	Publicize and unpublicize organization membership.
- read:org	Read-only access to organization, teams, and membership.
-admin:public_key	Fully manage public keys.
- write:public_key	Create, list, and view details for public keys.
- read:public_key	List and view details for public keys.
-admin:repo_hook	Grants read, write, ping, and delete access to hooks in public or private repositories.
- write:repo_hook	Grants read, write, and ping access to hooks in public or private repositories.
- read:repo_hook	Grants read and ping access to hooks in public or private repositories.
-admin:org_hook	Grants read, write, ping, and delete access to organization hooks. Note:OAuth tokens will only be able to perform these actions on organization hooks which were created by the OAuth App. Personal access tokens will only be able to perform these actions on organization hooks created by a user.
-Gist	Grants write access to gists.
-Notifications	Grants read access to a user's notifications. repo also provides this access.
-User	Grants read/write access to profile info only. Note that this scope includes user:email and user:follow.
- read:user	Grants access to read a user's profile data.
- user:email	Grants read access to a user's email addresses.
- user:follow	Grants access to follow or unfollow other users.
-delete_repo	Grants access to delete adminable repositories.
-admin:gpg_key	Fully manage GPG keys.
- write:gpg_key	Create, list, and view details for GPG keys.
- read:gpg_key	List and view details for GPG keys.
+Scope Name             | Description
+-----------------------|-------------
+(no scope)             | Read-only access to public information (public user profile info, public repo info, gists).
+`Repo`                 | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for public and private repos and organizations.
+    `repo:status`      | Read/write access to repo commit statuses. Apps do not gain access to your code.
+    `repo_deployment`  | Access to deployment statuses for repos. Apps do not gain access to your code.
+    `public_repo`      | Read/write access to code, commit statuses, collaborators, and deployment statuses for public repos and organizations.
+    `repo:invite`      | Accept/decline abilities for invitations to collaborate on a repo. Apps do not gain access to your code.
+    `admin:org`        | Manage organizations, teams, and memberships.
+    `write:org`        | Publicize and unpublicize organization memberships.
+    `read:org`         | Read-only access to organizations, teams, and memberships.
+    `admin:public_key` | Manage public keys.
+    `write:public_key` | Create, list, and view details for public keys.
+    `read:public_key`  | List and view details for public keys.
+    `admin:repo_hook`  | Read, write, ping, and delete access to hooks in repos.
+    `write:repo_hook`	 | Read, write, and ping access to hooks in repos.
+    `read:repo_hook`   | Read and ping access to hooks in repos.
+    `admin:org_hook`   | Read, write, ping, and delete access to organization hooks.
+`Gist`                 | Write access to gists.
+`Notifications`        | Read access to a user's notifications. `Repo` also provides this access.
+`User`                 | Read/write access to profile info. Note that this scope includes user:email and user:follow.
+    `read:user`        | Read access to user's profile data.
+    `user:email`       | Read access to user's email addresses.
+    `user:follow`      | Access to follow or unfollow other users.
+    `delete_repo`      | Access to delete adminable repos.
+    `admin:gpg_key`    | Fully manage GPG keys.
+    `write:gpg_key`    | Create, list, and view details for GPG keys.
+    `read:gpg_key`     | List and view details for GPG keys.
 
-For more info, see About scopes for OAuth Apps in the GitHub Developer documentation.
+For more info, see [About scopes for OAuth Apps] in the GitHub Developer documentation.
+
+
 
 A Word about State
 
