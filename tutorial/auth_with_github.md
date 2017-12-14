@@ -51,15 +51,19 @@ Once you have gathered this info, you are ready to register.
 
 1. Log in to your GitHub account.
 2. In the upper-right corner, click your profile photo, then click **Settings**.
+
     ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_2_sel_settings.png)
     
 3. In the left sidebar, click **Developer settings**.
+
     ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_3_sel_dev_settings.png)
 
 4. In the left sidebar, click **OAuth Apps**.
+
     ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_4_sel_reg_new_app.png)
 
 5. Click **Register a new application**.
+
     ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_5_reg_app.png)
 
 6. Type in the details for your application, and click **Register application**.
@@ -67,10 +71,8 @@ Once you have gathered this info, you are ready to register.
     ---------------------------|-------------------------------
     Application name           | **Required.** The name of your application.
     Homepage URL               | **Required.** The full URL to your app's website. For security purposes, you should use https.
-    Application description    | A public description of your app.
-    Authorization callback URL | The callback URL of your app.
-
-10.	Now give the application a name, main URL, and callback URL. The callback URL is where GitHub will redirect your users to after they successfully login. It has to be on the same domain as your main URL. It also needs to be a valid http:// URL. GitHub won't accept 'localhost', 'your mom', etc.
+    Application description    | A description of your app that will be shared with users.
+    Authorization callback URL | **Required.** The callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL. GitHub won't accept _localhost_.
 
 When you have finished, your application will be assigned a Client ID and Client Secret. Also notice that you can edit any options for your app or revoke tokens from this page. In the process of testing you may need to do this a few times. https:// is your friend.
 Screenshot of final page. Annotate?
