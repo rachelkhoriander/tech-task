@@ -123,6 +123,21 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 
 ### Processing the Logout
 
+Once the user clicks **Sign out with GitHub**, we will destroy the session and redirect the user to the index page.
+
+```php
+<?php
+
+session_start();
+
+//Clear and destroy session.
+unset($_SESSION['user']);
+session_destroy();
+
+//Redirect to index page, so user can log in.
+header("location: index.php");
+?>
+```
 
 ## Deploying the Application
 
