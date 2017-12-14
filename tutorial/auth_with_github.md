@@ -181,7 +181,7 @@ Scope Name         | Description
 `write:gpg_key`    | Create, list, and view details for GPG keys.
 `read:gpg_key`     | List and view details for GPG keys.
 
-For more info, see [About scopes for OAuth Apps](https://developer.github.com/apps/building-oauth-apps/scopes-for-oauth-apps/) in the GitHub Developer documentation.
+For more info, see [Scopes for OAuth Apps](https://developer.github.com/apps/building-oauth-apps/scopes-for-oauth-apps/) in the GitHub Developer documentation.
 
 #### Getting an Access Token
 
