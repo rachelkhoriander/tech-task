@@ -16,16 +16,16 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
 
 - [How Does GitHub Authentication Work?](#how-does-github-authentication-work)  
   - [What is an Access Token?](#what-is-an-access-token)  
-- [Registering Your Application with GitHub](#registering-your-application-with-github)  
-- [Building Your Application](#building-your-application)  
+- [Registering the Application with GitHub](#registering-the-application-with-github)  
+- [Building the Application](#building-the-application)  
     - [Accessing the GitHub API (init.php)](#accessing-the-github-api)  
     - [Building the Index Page (index.php)](#building-the-index-page)  
     - [Processing the Login (login.php)](#processing-the-login)  
     - [Processing the Callback (callback.php)](#processing-the-callback)  
     - [Building the Main Page (main.php)](#building-the-main-page)  
     - [Processing the Logout (logout.php)](#processing-the-logout)  
-- [Deploying Your Application](#deploying-your-application)  
-- [Running Your Application](#running-your-application)
+- [Deploying the Application](#deploying-the-application)  
+- [Running the Application](#running-the-application)
 
 ## How Does GitHub Authentication Work?
 
@@ -43,7 +43,7 @@ The basic process is as follows:
 
 An access token is a piece of data that accompanies a request to a server and is verified for authenticity before the server responds to the request. The third-party application provides a key, or _secret_, along with the token to allow the server to decode and verify it. Without the correct secret, the token is useless.
 
-## Registering Your Application with GitHub
+## Registering the Application with GitHub
 
 Before you can use GitHub authentication for your web application, you must first register it with GitHub. You can register your app under your personal account or under any organization to which you have administrative access.
 
@@ -85,7 +85,7 @@ When you have finished, GitHub will assign your application a **Client ID** and 
 > **Note:**  
 > Notice that you can edit options for your app, track user metrics, and revoke user tokens from this page. This will come in handy during testing.
 
-## Building Your Application
+## Building the Application
 
 Now that GitHub has assigned our application a Client ID and Client Secret, we can build our application. The app will contain the following assets:
 
@@ -124,14 +124,14 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 ### Processing the Logout
 
 
-##Deploying Your Application
+## Deploying the Application
 
 
-##Running Your Application
+## Running the Application
 
 
+## Next Steps
+To learn more about GitHub's API, visit the [GitHub Developer Guide](https://developer.github.com/apps/getting-started-with-building-apps/).
 
-
-[Link](http://www.sems-tech.com)
-
+To learn more about extracting data from the GitHub API, stay tuned for a forthcoming tutorial.
 
