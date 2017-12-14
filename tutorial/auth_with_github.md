@@ -78,7 +78,7 @@ Once you have gathered this info, you are ready to register.
     Field                        | Description
     -----------------------------|-------------------------------
     `Application name`           | **Required.** Name of your application.
-    `Homepage URL`               | **Required.** Full URL to your app's website. For security purposes, you should use the https protocol.
+    `Homepage URL`               | **Required.** Full URL to your app's website. For security purposes, you should use the _https_ protocol.
     `Application description`    | Description of your app that will be shared with users.
     `Authorization callback URL` | **Required.** Callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL; GitHub won't accept _localhost_.
 
