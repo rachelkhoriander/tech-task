@@ -129,7 +129,27 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 
 ## Running the Application
 
+Now that everything is properly configured, let’s run our application to review what users will see.
 
+1.	Type the URL to the appication's index page, and click **Sign In with GitHub**.  
+
+    ![Screenshot: Index Page](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_1_index.png)
+ 
+2.	Log in using GitHub’s API.  
+
+    ![Screenshot: GitHub Login](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_2_ghlogin.png)
+
+3.	Authorize access to your GitHub user data.  
+
+    ![Screenshot: GitHub Authorize](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_3_ghauth.png)
+ 
+    > Note:  
+    > Notice the access level corresponds to the requsted scope.
+
+4.	Arrive at the application’s main page.  
+
+    ![Screenshot: Main Page](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/run_4_main.png)
+ 
 ## Next Steps
 To learn more about GitHub's API, visit the [GitHub Developer Guide](https://developer.github.com/apps/getting-started-with-building-apps/).
 
