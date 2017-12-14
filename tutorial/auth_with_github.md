@@ -18,7 +18,7 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
   - [What is an Access Token?](#what-is-an-access-token)  
 - [Registering the Application with GitHub](#registering-the-application-with-github)  
 - [Building the Application](#building-the-application)  
-    - [Accessing the GitHub API (init.php)](#accessing-the-github-api)  
+    - [Accessing the GitHub API (access_gh.php)](#accessing-the-github-api)  
     - [Building the Index Page (index.php)](#building-the-index-page)  
     - [Processing the Login (login.php)](#processing-the-login)  
     - [Processing the Callback (callback.php)](#processing-the-callback)  
@@ -89,7 +89,7 @@ When you have finished, GitHub will assign your application a **Client ID** and 
 
 Now that GitHub has assigned our application a Client ID and Client Secret, we can build our application. The app will contain the following assets:
 
-- **Main logic script** (include file - init.php)  
+- **Main logic script** (include file - access_gh.php)  
     Acts as the brains of the operation: makes the initial call to the GitHub API, uses the returned code to get an access token, and fetches user data.
 - **Index page** (index.php)  
     Serves as the initial page of the app. Contains log in button.
@@ -106,14 +106,16 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 
 ### Accessing the GitHub API
 
-In this tutorial, we have contained the code required to interact with the GitHub API in an include file (init.php). 
+In this tutorial, the code required to interact with the GitHub API is located in an include file (access_gh.php).
 
-#### Redirecting to GitHub to Authenticate
-When you are ready to authenticate users, you'll need to send them to GitHub to request an access code for your application.
+#### Authenticating Users
+When you are ready to authenticate users, you'll need to send a GET request to GitHub to request an access code for your application.
 
-Where you send them (GET call):
-https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE&state=STATE
-Parameters
+```php
+https://github.com/login/oauth/authorize?client_id=_CLIENT_ID_&redirect_url=_REDIRECT_URL_&scope=_SCOPE_&state=_STATE_
+```
+
+##### Parameters
 You can (and should) append these parameters to the URL.
 Name	Type	Description
 client_id	string	Required. The client ID that GitHub assigned to your application when you registered.
@@ -174,9 +176,25 @@ admin:gpg_key	Fully manage GPG keys.
  read:gpg_key	List and view details for GPG keys.
 
 For more info, see About scopes for OAuth Apps in the GitHub Developer documentation.
+
 A Word about State
 
 
+
+##### Review the Code
+In the code snippet below, the `client_id` is pulled from your application’s GitHub registration page, and the `redirect_uri` is identical to the `Authorization callback URL` you entered when registering your application with GitHub (see [Registering the Application with GitHub](#registering-the-application-with-github)). If no `redirect_uri` is provided in the code, GitHub automatically redirects the user to the `Authorization callback URL`.
+
+```php
+function goToAuthURL() {
+    $client_id= "02786875d196f38bfdf1";
+    $redirect_url= "https://rachel.sems-tech.com/callback.php";
+ 
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $url = 'https://github.com/login/oauth/authorize?client_id='. $client_id. '&redirect_url='. $redirect_url.'&scope=read:user';
+        header("location: $url");
+    }
+}
+```
 
 
 
