@@ -20,11 +20,11 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
 - [Building the Application](#building-the-application)  
     - [Accessing the GitHub API (access_gh.php)](#accessing-the-github-api)  
         - [Authenticating Users](#authenticating-users)  
-	    - [Choosing Scopes](#choosing-scopes)
-        - [Getting an Access Token](#getting-an-access-token)  
-	    - [Checking the State](#checking-the-state)
-	    - [Parsing the Authorization Code](#parsing-the-authorization-code)
-	    - [Exchanging for an Access Token](#exchanging-for-an-access-token)
+	    - [Choosing Scopes](#choosing-scopes)  
+	- [Getting an Access Token](#getting-an-access-token)  
+	    - [Checking the State](#checking-the-state)  
+	    - [Parsing the Authorization Code](#parsing-the-authorization-code)  
+	    - [Exchanging for an Access Token](#exchanging-for-an-access-token)  
 	- [Fetching User Data](#fetching-user-data)  
 	    - [Extracting User Data](#extracting-user-data)
     - [Building the Index Page (index.php)](#building-the-index-page)  
@@ -233,13 +233,13 @@ Now, you'll need to build the querystring for the post request to exchange the a
 
 You can (and should) append the following parameters to the request.
 
-Name           | Description
----------------|-----------------
-client_id      | **Required.** Client ID you received from GitHub when you registered your application.
-client_secret  | **Required.** Client secret you received from GitHub when you registered your app.
-code           | **Required.** Code you received as a response to your initial GitHub API call.
-redirect_uri   | URL in your application where GitHub will redirect users after they successfully log in. If not provided, GitHub will redirect users to the `Authorization callback URL` you provided when you registered your app.
-state          | Random string you provided in your initial GitHub API call.
+Name             | Description
+-----------------|-----------------
+`client_id`      | **Required.** Client ID you received from GitHub when you registered your application.
+`client_secret`  | **Required.** Client secret you received from GitHub when you registered your app.
+`code`           | **Required.** Code you received as a response to your initial GitHub API call.
+`redirect_uri`   | URL in your application where GitHub will redirect users after they successfully log in. If not provided, GitHub will redirect users to the `Authorization callback URL` you provided when you registered your app.
+`state`          | Random string you provided in your initial GitHub API call.
 
 
 > **Note:**  
@@ -439,7 +439,7 @@ Now that everything is properly configured, let’s run our application to revie
     ![Screenshot: GitHub authorization](images/run_3_ghauth.png)
  
     > Note:  
-    > Notice the access level corresponds to the requsted scope.
+    > Notice the access level corresponds to the requested scope.
 
 4.	Arrive at the application’s main page (main.php).  
 
