@@ -115,7 +115,6 @@ When you are ready to authenticate users, you'll need to send a GET request to G
 https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE&state=STATE
 ```
 
-##### Parameters
 You can (and should) append the following parameters to the URL.
 
 Name          | Description
@@ -136,23 +135,10 @@ When users authenticate, GitHub lets them know what type of data your applicatio
 >**Note**:  
 > Normally, users will grant you scopes identical to what you request, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
 
-Data Type               | Description
-------------------------|--------------
-Commit Status           |	Allows apps to determine if a build is successful against a specific commit. Apps do not gain access to your code.
-Deployments	            | Allows apps to determine if a deployment is successful against a specific commit. Apps do not gain access to your code.
-Gists	                  | Allows apps to access your gists.
-Hooks                   | Includes hook configurations on repositories you manage.
-Notifications           | Allows apps to read your GitHub notifications, like comments on issues and pull requests. Apps do not gain access to your repositories.
-Organizations and Teams | Allows apps to access organization and team membership.
-Personal User Data      | Includes information found in your user profile, including your name, email address, and location.
-Repositories	          | Includes the names of contributors, branches you've created, and actual files within your repos.
-Repository Delete       | Allows apps to delete repos that you administer. Apps do not gain access to your code.
-
-
 Scope Name             | Description
 -----------------------|-------------
 (no scope)             | Read-only access to public information (public user profile info, public repo info, gists).
-`Repo`                 | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for public and private repos and organizations.
+`Repo`                 | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for public and private repos and organizations.  
     `repo:status`      | Read/write access to repo commit statuses. Apps do not gain access to your code.
     `repo_deployment`  | Access to deployment statuses for repos. Apps do not gain access to your code.
     `public_repo`      | Read/write access to code, commit statuses, collaborators, and deployment statuses for public repos and organizations.
