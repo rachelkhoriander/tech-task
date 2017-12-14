@@ -78,7 +78,7 @@ When you have finished, GitHub will assign your application a **Client ID** and 
 
 ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_6_app_reg_final.png)
 
-> **Note:**
+> **Note:**  
 > Notice that you can edit options for your app, track user metrics, and revoke user tokens from this page. This will come in handy during testing.
 
 
