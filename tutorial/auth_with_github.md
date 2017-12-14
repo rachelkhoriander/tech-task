@@ -66,12 +66,12 @@ Once you have gathered this info, you are ready to register.
 
     ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_5_reg_app.png)
 
-    Field                      | Description
-    ---------------------------|-------------------------------
-    Application name           | **Required.** The name of your application.
-    Homepage URL               | **Required.** The full URL to your app's website. For security purposes, you should use https.
-    Application description    | A description of your app that will be shared with users.
-    Authorization callback URL | **Required.** The callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL. GitHub won't accept _localhost_.
+    Field                        | Description
+    -----------------------------|-------------------------------
+    `Application name`           | **Required.** The name of your application.
+    `Homepage URL`               | **Required.** The full URL to your app's website. For security purposes, you should use https.
+    `Application description`    | A description of your app that will be shared with users.
+    `Authorization callback URL` | **Required.** The callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL. GitHub won't accept _localhost_.
 
 
 When you have finished, your application will be assigned a Client ID and Client Secret. Also notice that you can edit any options for your app or revoke tokens from this page. In the process of testing you may need to do this a few times.
