@@ -50,20 +50,21 @@ Before you begin, you will need to know:
 Once you have gathered this info, you are ready to register.
 
 1. Log in to your GitHub account.
-2. In the upper-right corner, click your profile photo, then click **Settings**.  
-    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_2_sel_settings.png)
+2. In the upper-right corner, click your profile photo, then click **Settings**.
+
+    ![Screenshot: Select Settings](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_2_sel_settings.png)
     
 3. In the left sidebar, click **Developer settings**.
 
-    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_3_sel_dev_settings.png)
+    ![Screenshot: Select Dev Settings](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_3_sel_dev_settings.png)
 
 4. Click **Register a new application**.
 
-    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_4_sel_reg_new_app.png)
+    ![Screenshot: Register new app](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_4_sel_reg_new_app.png)
 
 5. Type in the details for your application, and click **Register application**.
 
-    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_5_reg_app.png)
+    ![Screenshot: Enter app detail](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_5_reg_app.png)
 
     Field                        | Description
     -----------------------------|-------------------------------
@@ -72,10 +73,9 @@ Once you have gathered this info, you are ready to register.
     `Application description`    | A description of your app that will be shared with users.
     `Authorization callback URL` | **Required.** The callback URL for your app. This is where GitHub will redirect users after they successfully log in. It must be on the same domain as your main URL and must be a valid URL; GitHub won't accept _localhost_.
 
-
 When you have finished, GitHub will assign your application a **Client ID** and **Client Secret**. 
 
-![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_6_app_reg_final.png)
+![Screenshot: Edit app details](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_6_app_reg_final.png)
 
 > **Note:**  
 > Notice that you can edit options for your app, track user metrics, and revoke user tokens from this page. This will come in handy during testing.
