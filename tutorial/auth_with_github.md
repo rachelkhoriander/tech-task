@@ -51,7 +51,9 @@ Once you have gathered this info, you are ready to register.
 
 1.	Log in to your GitHub account.
 2.	In the upper-right corner, click your profile photo, then click **Settings**.
-![Image](https://i.pinimg.com/736x/87/a9/28/87a9284797daf471596daeabd6669a31--tintin-et-milou-bd-tintin.jpg)
+
+![Image](https://rachelkhoriander.github.com/images/reg_2_sel_settings.png)
+
 3.	In the left sidebar, click **Developer settings**.
 
 4.	In the left sidebar, click **OAuth Apps**.
