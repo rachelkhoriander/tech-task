@@ -102,7 +102,7 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 -	**Logout script** (logout.php)  
     Handles the logout process.
 -	**Stylesheet** (style.css)  
-    Unnecessary, but included to make the app look a little prettier.
+    Unnecessary, but included in the repo to make the app look a little prettier.
 
 ### Accessing the GitHub API
 
@@ -111,7 +111,7 @@ Now that GitHub has assigned our application a Client ID and Client Secret, we c
 
 ### Building the Index Page
 
-The user will arrive on the application's index page, which incldes the **Sign In with GitHub** button.
+The user will arrive on the application's index page, which includes the **Sign In with GitHub** button.
 
 ```php
 <?php
