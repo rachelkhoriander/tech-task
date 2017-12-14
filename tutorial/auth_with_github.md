@@ -150,7 +150,7 @@ Your application may request read or write access to specific types of users’ 
 When users authenticate, GitHub lets them know what type of data your applications wants to access and what type of access to that data your application is requesting.
 
 >**Note**:  
-> Normally, users will grant you scopes identical to what you request, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
+> Normally, users will grant scopes identical to what you request, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
 
 Scope Name         | Description
 -------------------|-------------
