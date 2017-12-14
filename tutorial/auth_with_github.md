@@ -57,8 +57,6 @@ Once you have gathered this info, you are ready to register.
 1. Log in to your GitHub account.
 2. In the upper-right corner, click your profile photo, then click **Settings**.
 
-tech-task/tutorial/images/reg_2_sel_settings.png
-
     ![Screenshot: Select Settings](tech-task/tutorial/images/reg_2_sel_settings.png)
     
 3. In the left sidebar, click **Developer settings**.
