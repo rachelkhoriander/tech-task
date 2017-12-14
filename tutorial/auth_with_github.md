@@ -135,34 +135,34 @@ When users authenticate, GitHub lets them know what type of data your applicatio
 >**Note**:  
 > Normally, users will grant you scopes identical to what you request, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
 
-Scope Name             | Description
------------------------|-------------
-(no scope)             | Read-only access to public information (public user profile info, public repo info, gists).
-`Repo`                 | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for public and private repos and organizations.  
-    `repo:status`      | Read/write access to repo commit statuses. Apps do not gain access to your code.
-    `repo_deployment`  | Access to deployment statuses for repos. Apps do not gain access to your code.
-    `public_repo`      | Read/write access to code, commit statuses, collaborators, and deployment statuses for public repos and organizations.
-    `repo:invite`      | Accept/decline abilities for invitations to collaborate on a repo. Apps do not gain access to your code.
-    `admin:org`        | Manage organizations, teams, and memberships.
-    `write:org`        | Publicize and unpublicize organization memberships.
-    `read:org`         | Read-only access to organizations, teams, and memberships.
-    `admin:public_key` | Manage public keys.
-    `write:public_key` | Create, list, and view details for public keys.
-    `read:public_key`  | List and view details for public keys.
-    `admin:repo_hook`  | Read, write, ping, and delete access to hooks in repos.
-    `write:repo_hook`	 | Read, write, and ping access to hooks in repos.
-    `read:repo_hook`   | Read and ping access to hooks in repos.
-    `admin:org_hook`   | Read, write, ping, and delete access to organization hooks.
-`Gist`                 | Write access to gists.
-`Notifications`        | Read access to a user's notifications. `Repo` also provides this access.
-`User`                 | Read/write access to profile info. Note that this scope includes user:email and user:follow.
-    `read:user`        | Read access to user's profile data.
-    `user:email`       | Read access to user's email addresses.
-    `user:follow`      | Access to follow or unfollow other users.
-    `delete_repo`      | Access to delete adminable repos.
-    `admin:gpg_key`    | Fully manage GPG keys.
-    `write:gpg_key`    | Create, list, and view details for GPG keys.
-    `read:gpg_key`     | List and view details for GPG keys.
+Scope Name         | Description
+-------------------|-------------
+(no scope)         | Read-only access to public information (public user profile info, public repo info, gists).
+`Repo`             | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for public and private repos and organizations.
+`repo:status`      | Read/write access to repo commit statuses. Apps do not gain access to your code.
+`repo_deployment`  | Access to deployment statuses for repos. Apps do not gain access to your code.
+`public_repo`      | Read/write access to code, commit statuses, collaborators, and deployment statuses for public repos and organizations.
+`repo:invite`      | Accept/decline abilities for invitations to collaborate on a repo. Apps do not gain access to your code.
+`admin:org`        | Manage organizations, teams, and memberships.
+`write:org`        | Publicize and unpublicize organization memberships.
+`read:org`         | Read-only access to organizations, teams, and memberships.
+`admin:public_key` | Manage public keys.
+`write:public_key` | Create, list, and view details for public keys.
+`read:public_key`  | List and view details for public keys.
+`admin:repo_hook`  | Read, write, ping, and delete access to hooks in repos.
+`write:repo_hook`	 | Read, write, and ping access to hooks in repos.
+`read:repo_hook`   | Read and ping access to hooks in repos.
+`admin:org_hook`   | Read, write, ping, and delete access to organization hooks.
+`Gist`             | Write access to gists.
+`Notifications`    | Read access to a user's notifications. `Repo` also provides this access.
+`User`             | Read/write access to profile info. Note that this scope includes user:email and user:follow.
+`read:user`        | Read access to user's profile data.
+`user:email`       | Read access to user's email addresses.
+`user:follow`      | Access to follow or unfollow other users.
+`delete_repo`      | Access to delete adminable repos.
+`admin:gpg_key`    | Fully manage GPG keys.
+`write:gpg_key`    | Create, list, and view details for GPG keys.
+`read:gpg_key`     | List and view details for GPG keys.
 
 For more info, see [About scopes for OAuth Apps] in the GitHub Developer documentation.
 
