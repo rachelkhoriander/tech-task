@@ -155,7 +155,7 @@ When users authenticate, GitHub lets them know what type of data your applicatio
 Scope Name         | Description
 -------------------|-------------
 (no scope)         | Read-only access to public information (public user profile info, public repo info, gists).
-`Repo`             | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for public and private repos and organizations.
+`Repo`             | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for repos and organizations.
 `repo:status`      | Read/write access to repo commit statuses. Apps do not gain access to your code.
 `repo_deployment`  | Access to deployment statuses for repos. Apps do not gain access to your code.
 `public_repo`      | Read/write access to code, commit statuses, collaborators, and deployment statuses for public repos and organizations.
