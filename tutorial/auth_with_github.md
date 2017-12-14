@@ -5,7 +5,7 @@ Welcome to the first of a series of tutorials on using the GitHub API. In this t
 Benefits of using GitHub to authenticate include:
 
 - less development time
--	less code to implement
+- less code to implement
 - reduced maintenance
 
 Using simple PHP, we can focus in on the integration process without complicating the issue by introducing unfamiliar frameworks. Using PHP also allows us to avoid exposing sensitive data through client-side code. 
@@ -24,7 +24,7 @@ Throughout this tutorial, we have kept the code simple, so you will need to crea
         - [Getting an Access Token](#getting-an-access-token)  
 	    - [Checking the State](#checking-the-state)
 	    - [Parsing the Authorization Code](#parsing-the-authorization-code)
-	    - [Retrieving an Access Token](#retrieving-an-access-token)
+	    - [Exchanging for an Access Token](#exchanging-for-an-access-token)
 	- [Fetching User Data](#fetching-user-data)  
 	    - [Extracting User Data](#extracting-user-data)
     - [Building the Index Page (index.php)](#building-the-index-page)  
@@ -198,7 +198,7 @@ A Word about State
 
 
 
-#### Getting an Authorization Code
+#### Getting an Access Token
 
 Once redirected to GitHub, the user will be prompted to log in. If the user accepts your request, Github redirects to the `redirect_url` or `Authorization callback URL` with an authorization code, which can be exchanged for an access token, and the state you provided in the previous step.
 
@@ -225,7 +225,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $code = $_GET['code'];
 ```
 
-##### Retrieving an Access Token
+##### Exchanging for an Access Token
 
 Now, you'll need to build the querystring for the post request to exchange the authorization code for an access token.
 
