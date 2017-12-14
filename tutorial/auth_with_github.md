@@ -37,11 +37,11 @@ Like many other sites, GitHub uses a security framework called OAuth to allow us
 
 The basic process is as follows:
 
-1. The third-party client initiates and redirects the user to GitHub.
+1. We initiate and redirect the user to GitHub.
 2. The user authenticates.
-3. GitHub redirects the user to the client, providing an authorization code.
-4. The client exchanges the code for an access token.
-5. The client accesses the API using the user’s access token.
+3. GitHub redirects the user to us, providing an authorization code.
+4. We exchange the code for an access token.
+5. We access the API using the user’s access token.
 
 ### What is an Access Token?
 
@@ -49,12 +49,12 @@ An access token is a piece of data that accompanies a request to a server and is
 
 ## Registering the Application with GitHub
 
-Before you can use GitHub authentication for your web application, you must first register your app with GitHub. You can register your app under your personal account or under any organization for which you are an administrator.
+Before we can use GitHub authentication for our web application, we must first register our app with GitHub. You can register an app under your personal account or under any organization for which you are an administrator.
 
-Before you begin, you will need to know:
+Before we begin, we will need to know:
 
--	Your application’s main URL
--	Your callback URL (the URL of the page to which GitHub should redirect the user after authentication is complete)
+-	Our application’s main URL
+-	Our callback URL (the URL of the page to which GitHub should redirect the user after authentication is complete)
 
 Once you have gathered this info, you are ready to register.
 
@@ -91,7 +91,7 @@ When you have finished, GitHub will assign your application a **Client ID** and 
 
 ## Building the Application
 
-Now that GitHub has assigned our application a **Client ID** and **Client Secret**, we can build our application. The app will include the following assets:
+Now that GitHub has assigned our application a **Client ID** and **Client Secret**, we can build our app. The app will include the following assets:
 
 - **Main logic script** (include file - access_gh.php)  
     Acts as the brains of the operation: makes the initial call to the GitHub API, uses the returned authorization code to get an access token, and fetches user data.
@@ -113,11 +113,11 @@ Now that GitHub has assigned our application a **Client ID** and **Client Secret
 In this tutorial, the source code required to interact with the GitHub API is located in an include file (access_gh.php).
 
 #### Authenticating Users
-When you are ready to authenticate users, you'll need to send a GET request to GitHub to request an authorization code for your application.
+When we are ready to authenticate users, we'll need to send a GET request to GitHub to request an authorization code for our application.
 
 `https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE`
 
-You can (and should) append the following parameters to the URL.
+We can (and should) append the following parameters to the URL.
 
 Name           | Description
 ---------------|-------------
@@ -126,7 +126,7 @@ Name           | Description
 `scope`        | Space-delimited list of permissions that your application is requesting. If not provided, the scope will default to an empty list for users who have not previously authorized any scopes for your app. For users who have authorized scopes, GitHub will return a set of all of the scopes the user has previously authorized for the app.
 `state`        | Random string used to protect against cross-site request forgery attacks.
 
-In the code snippet below, the `client_id` is pulled from your application’s GitHub registration page, and the `redirect_uri` is identical to the `Authorization callback URL` you entered when registering your application with GitHub (see [Registering the Application with GitHub](#registering-the-application-with-github)).
+In the code snippet below, the `client_id` is pulled from the application’s GitHub registration page, and the `redirect_uri` is identical to the `Authorization callback URL` entered when registering the application with GitHub (see [Registering the Application with GitHub](#registering-the-application-with-github)).
 
 ```php
 //Redirects to GitHub authentication page, restricting scope to read-only user data.
@@ -142,15 +142,15 @@ function goToAuthURL() {
 ```
 
 ##### Choosing Scopes
-Your application may request read or write access to specific types of users’ GitHub data.
+Our application may request read or write access to specific types of users’ GitHub data.
 
--	Read access allows your app to look at data.
--	Write access allows your app to change data.
+-	Read access allows our app to look at data.
+-	Write access allows our app to change data.
 
-When users authenticate, GitHub lets them know what type of data your applications wants to access and what type of access to that data your application is requesting.
+When users authenticate, GitHub lets them know what type of data our application wants to access and what type of access to that data our app is requesting.
 
 >**Note**:  
-> Normally, users will grant scopes identical to what you request, but remember that they can always choose to refuse or modify the type of access allowed; make sure you handle errors accordingly.
+> Normally, users will grant scopes identical to what we request, but remember that they can always choose to refuse or modify the type of access allowed; make sure to handle errors accordingly.
 
 Scope Name         | Description
 -------------------|-------------
@@ -185,12 +185,12 @@ For more info, see [Scopes for OAuth Apps](https://developer.github.com/apps/bui
 
 #### Getting an Access Token
 
-Once redirected to GitHub, the user will be prompted to log in and authorize your application to access data. If the user accepts your request, GitHub redirects to the `redirect_uri` or `Authorization callback URL` with an authorization code, which can be exchanged for an access token.
+Once redirected to GitHub, the user will be prompted to log in and authorize our application to access data. If the user accepts our request, GitHub redirects to the `redirect_uri` or `Authorization callback URL` with an authorization code, which we can exchange for an access token.
 
-In the code snippets below, the `client_id` and `client_secret`are pulled from your application’s GitHub registration page, and the `redirect_uri` is identical to the `Authorization callback URL` you entered when registering your application with GitHub (see [Registering the Application with GitHub](#registering-the-application-with-github)).
+In the code snippets below, the `client_id` and `client_secret`are pulled from our app’s GitHub registration page, and the `redirect_uri` is identical to the `Authorization callback URL` entered when registering the application with GitHub (see [Registering the Application with GitHub](#registering-the-application-with-github)).
 
 ##### Parsing the Authorization Code
-Parse the authorization code returned from GitHub.
+First, we need to parse the authorization code returned from GitHub.
 
 ```php
 function fetchData() {
@@ -207,11 +207,11 @@ function fetchData() {
 
 ##### Exchanging for an Access Token
 
-Now, you'll need to build the querystring for the post request to exchange the authorization code for an access token.
+Now, we need to build the querystring for the post request to exchange the authorization code for an access token.
 
 `https://github.com/login/oauth/access_token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=AUTH_CODE&state=STATE`
 
-You can (and should) append the following parameters to the request.
+We can (and should) append the following parameters to the request.
 
 Name             | Description
 -----------------|-----------------
@@ -220,7 +220,6 @@ Name             | Description
 `code`           | **Required.** Code you received as a response to your initial GitHub API call.
 `redirect_uri`   | URL in your application where GitHub will redirect users after they successfully log in. If not provided, GitHub will redirect users to the `Authorization callback URL` you provided when you registered your app.
 `state`          | Random string you provided in your initial GitHub API call.
-
 
 > **Note:**  
 > Never share your client secret with anyone; it's called a “secret” for a reason.
@@ -242,7 +241,7 @@ Name             | Description
 ```
 
 #### Fetching User Data
-Any time you want to fetch user data from GitHub (within the approved scope), use the access token and send along with your request.
+Any time we want to fetch user data from GitHub (within the approved scope), we send the access token along with our request.
 
 ```php
            // Build header
@@ -325,7 +324,7 @@ echo "Operation failed.";
 
 ### Processing the Callback
 
-When redirected from the GitHub API, we will fetch the user data and redirect to the main application page. 
+When the GitHub API responds to us, we will fetch the user data and redirect to the main application page. 
 
 ```php
 <?php
@@ -399,7 +398,7 @@ header("location: index.php");
 
 ## Deploying the Application
 
-To begin using PHP, you need to set up a proper development environment. Detailed instructions on how to set up this development environment on various platforms are available in the [online manual](http://www.php.net/manual/en/installation.php).
+To begin using PHP, we need to set up a proper development environment. Detailed instructions on how to set up this development environment on various platforms are available in the [online manual](http://www.php.net/manual/en/installation.php).
 
 After you’ve successfully installed and tested PHP, copy the source code files to your computer.
 
@@ -435,5 +434,4 @@ Now that everything is properly configured, let’s run our application to revie
 ## Next Steps
 To learn more about GitHub's API, visit the [GitHub Developer Guide](https://developer.github.com/apps/getting-started-with-building-apps/).
 
-To learn more about extracting data from the GitHub API, stay tuned for a forthcoming tutorial.
-
+To learn more about extracting data from the GitHub API, stay tuned for our forthcoming tutorial: **Extracting Data from the GitHub API**.
