@@ -131,10 +131,10 @@ In the code snippet below, the `client_id` is pulled from your application’s G
 ```php
 function goToAuthURL() {
     $client_id= "02786875d196f38bfdf1";
-    $redirect_url= "https://rachel.sems-tech.com/callback.php";
+    $redirect_uri= "https://rachel.sems-tech.com/callback.php";
  
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        $url = 'https://github.com/login/oauth/authorize?client_id='. $client_id. '&redirect_url='. $redirect_url.'&scope=read:user';
+        $url = 'https://github.com/login/oauth/authorize?client_id='. $client_id. '&redirect_uri='. $redirect_uri.'&scope=read:user';
         header("location: $url");
     }
 }
@@ -196,7 +196,7 @@ A Word about State
 
 #### Getting an Access Token
 
-Once redirected to GitHub, the user will be prompted to log in. If the user accepts your request, Github redirects to the `redirect_url` or `Authorization callback URL` with an authorization code, which can be exchanged for an access token, and the state you provided in the previous step.
+Once redirected to GitHub, the user will be prompted to log in. If the user accepts your request, Github redirects to the `redirect_uri` or `Authorization callback URL` with an authorization code, which can be exchanged for an access token, and the state you provided in the previous step.
 
 First, however, you’ll need to check the state parameter. 
 
@@ -245,7 +245,7 @@ Name             | Description
         // Build the querystring for the post request.
         $post = http_build_query(array(
                    'client_id' => $client_id,
-                   'redirect_url' => $redirect_url,
+                   'redirect_uri' => $redirect_url,
                    'client_secret' => $client_secret,
                    'code' => $code,
         ));
