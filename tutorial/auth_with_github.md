@@ -156,10 +156,10 @@ Scope Name         | Description
 -------------------|-------------
 (no scope)         | Read-only access to public information (public user profile info, public repo info, gists).
 `Repo`             | Read/write access to code, commit statuses, invitations, collaborators, team membership, and deployment status for repos and organizations.
-`repo:status`      | Read/write access to repo commit statuses. Apps do not gain access to your code.
-`repo_deployment`  | Access to deployment statuses for repos. Apps do not gain access to your code.
+`repo:status`      | Read/write access to repo commit statuses. Apps do not gain access to code.
+`repo_deployment`  | Access to deployment statuses for repos. Apps do not gain access to code.
 `public_repo`      | Read/write access to code, commit statuses, collaborators, and deployment statuses for public repos and organizations.
-`repo:invite`      | Accept/decline abilities for invitations to collaborate on a repo. Apps do not gain access to your code.
+`repo:invite`      | Accept/decline abilities for invitations to collaborate on a repo. Apps do not gain access to code.
 `admin:org`        | Manage organizations, teams, and memberships.
 `write:org`        | Publicize and unpublicize organization memberships.
 `read:org`         | Read-only access to organizations, teams, and memberships.
@@ -172,7 +172,7 @@ Scope Name         | Description
 `admin:org_hook`   | Read, write, ping, and delete access to organization hooks.
 `Gist`             | Write access to gists.
 `Notifications`    | Read access to a user's notifications. `Repo` also provides this access.
-`User`             | Read/write access to profile info. Note that this scope includes user:email and user:follow.
+`User`             | Read/write access to profile info, including email addresses and the ability to follow or unfollow other users.
 `read:user`        | Read access to user's profile data.
 `user:email`       | Read access to user's email addresses.
 `user:follow`      | Access to follow or unfollow other users.
