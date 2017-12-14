@@ -84,19 +84,19 @@ When you have finished, GitHub will assign your application a **Client ID** and 
 
 Now that GitHub has assigned our application a Client ID and Client Secret, we can build our application. The app will contain the following assets:
 
-- Main logic script (include file)  
+- **Main logic script** (include file - init.php)  
     Acts as the brains of the operation: makes the initial call to the GitHub API, uses the returned code to get an access token, and fetches user data.
-- Index page
+- **Index page** (index.php)  
     Serves as the initial page of the app. Contains log in button.
-- Login script  
+- **Login script** (login.php)  
     Handles the login process.
--	Callback script  
+-	**Callback script** (callback.php)  
     Handles callback logic and redirects the user appropriately.
--	Main page  
+-	**Main page** (main.php)  
     Serves as the main page of the app once the user logs in. Contains log out button.
--	Logout script  
+-	**Logout script** (logout.php)  
     Handles the logout process.
--	Stylesheet  
+-	**Stylesheet** (style.css)  
     Unnecessary, but included to make the app look a little prettier.
 
 
