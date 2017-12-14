@@ -94,7 +94,7 @@ When you have finished, GitHub will assign your application a **Client ID** and 
 Now that GitHub has assigned our application a **Client ID** and **Client Secret**, we can build our application. The app will include the following assets:
 
 - **Main logic script** (include file - access_gh.php)  
-    Acts as the brains of the operation: makes the initial call to the GitHub API, uses the returned code to get an access token, and fetches user data.
+    Acts as the brains of the operation: makes the initial call to the GitHub API, uses the returned authorization code to get an access token, and fetches user data.
 - **Index page** (index.php)  
     Serves as the initial page of the app. Contains log in button.
 - **Login script** (login.php)  
