@@ -49,29 +49,31 @@ Before you begin, you will need to know:
 
 Once you have gathered this info, you are ready to register.
 
-1.	Log in to your GitHub account.
-2.	In the upper-right corner, click your profile photo, then click **Settings**.
+1. Log in to your GitHub account.
+2. In the upper-right corner, click your profile photo, then click **Settings**.
 
-![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_2_sel_settings.png)
+    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_2_sel_settings.png)
 
-3.	In the left sidebar, click **Developer settings**.
+3. In the left sidebar, click **Developer settings**.
 
-4.	In the left sidebar, click **OAuth Apps**.
+    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_3_sel_dev_settings.png)
 
-5.	Click **New OAuth App**.
-Note: If you haven't created an app before, this button will say, Register a new application.
+4. In the left sidebar, click **OAuth Apps**.
 
-6.	In "Application name", type the name of your app.
+    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_4_sel_reg_new_app.png)
 
-7.	In "Homepage URL", type the full URL to your app's website.
+5. Click **Register a new application**.
 
-8.	Optionally, in "Application description", type a description of your app that users will see.
+    ![Image](https://github.com/rachelkhoriander/tech-task/blob/master/tutorial/images/reg_5_reg_app.png)
 
-9.	In "Authorization callback URL", type the callback URL of your app.
+6. Type in the details for your application.
+
+    In "Application name", type the name of your app.
+    In "Homepage URL", type the full URL to your app's website.
+    Optionally, in "Application description", type a description of your app that users will see.
+    In "Authorization callback URL", type the callback URL of your app.
 
 10.	Now give the application a name, main URL, and callback URL. The callback URL is where GitHub will redirect your users to after they successfully login. It has to be on the same domain as your main URL. It also needs to be a valid http:// URL. GitHub won't accept 'localhost', 'your mom', etc.
-
-11.	Info about what to fill out here:
 
 12.	https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/about-authorization-options-for-oauth-apps/
 
