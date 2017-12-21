@@ -5,7 +5,6 @@ Welcome to the first of a series of tutorials on using the GitHub API. In this t
 Benefits of using GitHub to authenticate include:
 
 - less development time
-- less code to implement
 - reduced maintenance
 
 Using simple PHP, we can focus in on the integration process without complicating the issue by introducing unfamiliar frameworks. Using PHP also allows us to avoid exposing sensitive data through client-side code. 
@@ -45,7 +44,7 @@ The basic process is as follows:
 
 ### What is an Access Token?
 
-An access token is a piece of data that accompanies a request to a server and is verified for authenticity before the server responds to the request. The third-party application provides a key, or _secret_, along with the token to allow the server to decode and verify it. Without the correct secret, the token is useless.
+An access token is a piece of data that accompanies a request to a server and is verified for authenticity before the server responds to the request. When making a request, we provide a key, or _secret_, along with the token to allow GitHub to decode and verify it. Without the correct secret, the token is useless.
 
 ## Registering the Application with GitHub
 
@@ -117,7 +116,7 @@ When we are ready to authenticate users, we'll need to send a GET request to Git
 
 `https://github.com/login/oauth/authorize?client_id=CLIENT_ID&redirect_url=REDIRECT_URL&scope=SCOPE`
 
-We can (and should) append the following parameters to the URL.
+Append the following parameters to the URL.
 
 Name           | Description
 ---------------|-------------
@@ -211,7 +210,7 @@ Now, we need to build the querystring for the post request to exchange the autho
 
 `https://github.com/login/oauth/access_token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=AUTH_CODE&state=STATE`
 
-We can (and should) append the following parameters to the request.
+Append the following parameters to the request:
 
 Name             | Description
 -----------------|-----------------
@@ -348,7 +347,7 @@ else {
 
 ### Building the Main Page
 
-If the login is successful, we will display the main page with the **Sign Out with GitHub** button.
+If the login is successful, we will display the main page with the **Sign Out** button.
 
 ```php
 <?php
@@ -373,7 +372,7 @@ if (!isset($_SESSION['user'])){
       <p>Hello, <?php echo $_SESSION['user'] ?>.</p>
       <p>Your public email address is:<br/>
       <?php echo $_SESSION['email'] ?>.</p>
-      <p><a href="logout.php"><input type='submit' name='submit' value='Sign Out with GitHub' /></a></p>
+      <p><a href="logout.php"><input type='submit' name='submit' value='Sign Out' /></a></p>
     </div>   
   </body>
 </html
@@ -381,7 +380,7 @@ if (!isset($_SESSION['user'])){
 
 ### Processing the Logout
 
-Once the user clicks **Sign Out with GitHub**, we will destroy the session and redirect the user to the index page.
+Once the user clicks **Sign Out**, we will destroy the session and redirect the user to the index page.
 
 ```php
 <?php
