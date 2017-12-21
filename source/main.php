@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])){
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Technical Task: Sign Out with GitHub</title>
+    <title>Technical Task: Sign Out</title>
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
