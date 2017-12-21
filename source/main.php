@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])){
       <p>Hello, <?php echo $_SESSION['user'] ?>.</p>
       <p>Your public email address is:<br/>
       <?php echo $_SESSION['email'] ?>.</p>
-      <p><a href="logout.php"><input type='submit' name='submit' value='Sign Out with GitHub' /></a></p>
+      <p><a href="logout.php"><input type='submit' name='submit' value='Sign Out' /></a></p>
     </div>   
   </body>
 </html> 
