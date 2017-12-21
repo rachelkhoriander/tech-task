@@ -197,7 +197,7 @@ function fetchData() {
 
     $client_id= "02786875d196f38bfdf1";
     $redirect_uri= "https://rachel.sems-tech.com/callback.php";
-    $client_secret = "31da8f9408febd03d766f5672c91623d6736a2cc";
+    $client_secret = _clientSecret goes here_;
     
     //If authorization code was returned, extract authorization code.
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
